@@ -88,7 +88,9 @@ export const getBook=async(req,res)=>{
        console.log(req.query)
         
         const data=await bookModel.find(queryParameters).sort(sortCriteria).sort(orderCriteria);
-        res.status(200).json("books:"+data);
+        res.status(200).json({
+            books:JSON.parse(JSON.stringify(data))
+        });
      
         // const title=req.query.title;
 
